@@ -35,12 +35,17 @@
                     let locationNode = xmlDoc.getElementsByTagName("location")[i];
                     let locationText = locationNode.textContent.trim();  // Obtener contenido del nodo
                     let locationHref = locationNode.getAttribute("href"); // Obtener el atributo href
+                    //<published date="2024-05-08T19:53:34 CEST"/>
+                    let publishedDate = xmlDoc.getElementsByTagName("published")[i];
+                    let dateAndTime = publishedDate.getAttribute("date");
+                    let date = dateAndTime.split("T")[0];
 
                     console.log(headline1);
                     console.log(locationHref);
+                    console.log(date);
 
                     const li = document.createElement('li');
-                    li.innerHTML = `<strong>${headline1}</strong> - ${locationHref}`;
+                    li.innerHTML = `<strong>${headline1}</strong> - ${locationHref} - ${date}`;
                     listNews.appendChild(li);
 
                 }
